@@ -19,6 +19,15 @@ exports.getTasks = async (req, res)=>{
     res.json(tasks);
 }
 
+//Get Task
+exports.getTask = async (req, res) => {
+    const task = await Task.findOne({
+        _id: req.params.id,
+        user: req.user
+    });
+    res.json(task);
+}
+
 //Update Tasks
 exports.updateTask = async (req, res) => {
     const updateTask = await Task.findOneAndUpdate({
